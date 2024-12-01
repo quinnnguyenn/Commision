@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f9;
+    background-color: #AF9FA5;
     margin: 0;
     padding: 0;
     display: flex;
@@ -11,11 +11,11 @@ body {
 }
 
 h1 {
-    color: #333;
+    color: #000000;
 }
 
 #results {
-    background-color: #fff;
+    background-color: #EDE3E4;
     border: 1px solid #ddd;
     border-radius: 8px;
     padding: 20px;
