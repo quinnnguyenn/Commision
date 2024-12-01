@@ -6,3 +6,61 @@
     <title>Joan's Sales Team</title>
     <link href="../css/style.css" rel="stylesheet" type="text/css">
 </head>
+
+<div>
+    <body>
+    
+        <div id="results">
+            <p id="summary"></p>
+        </div>
+    
+        <script>
+            window.onload = function() {
+                let name;
+                do {
+                    name = prompt("Please enter your name:");
+                    if (name === null || name.trim() === "") {
+                        alert("Please enter a name.");
+                    }
+                } while (name === null || name.trim() === "");
+    
+                let sales = [];
+                let sale;
+                do {
+                    sale = prompt(`Hi ${name}, Please enter the dollar amount of your sales a single sale at a time. Enter Done when you are finished.`);
+                    if (sale === null || sale.trim() === "") {
+                        alert('Please enter a number or type "done" to finish.');
+                    } else if (sale.toLowerCase() !== 'done') {
+                        let saleAmount = parseFloat(sale);
+                        if (!isNaN(saleAmount)) {
+                            sales.push(saleAmount);
+                        } else {
+                            alert("Invalid input. Please enter a valid number.");
+                        }
+                    }
+                } while (sale === null || sale.trim() === "" || sale.toLowerCase() !== 'done');
+    
+                let totalSales = sales.reduce((total, amount) => total + amount, 0);
+                let commissionRate;
+                if (totalSales <= 0) {
+                    commissionRate = 0;
+                } else if (totalSales <= 499.99) {
+                    commissionRate = 0.05;
+                } else if (totalSales <= 999.99) {
+                    commissionRate = 0.10;
+                } else {
+                    commissionRate = 0.15;
+                }
+                let commission = totalSales * commissionRate;
+                let earnings = totalSales + commission;
+    
+                let summaryText = `Hello ${name}, here is your weekly commission report. ` +
+                    `Your sales total is $${totalSales.toFixed(2)}, so your commission rate is ${(commissionRate * 100)}%. ` +
+                    `Your total commission is $${commission.toFixed(2)}. Your total earnings are $${earnings.toFixed(2)}.`;
+    
+                document.getElementById('summary').textContent = summaryText;
+            };
+        </script>
+    </body>
+    </div>
+    </html>
